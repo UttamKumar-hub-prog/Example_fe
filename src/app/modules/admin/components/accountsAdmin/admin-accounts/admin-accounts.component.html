@@ -1,0 +1,49 @@
+<div>
+  <h2>Admin Accounts</h2>
+
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>PAN</th>
+      <th>Aadhaar</th>
+      <th>Acc No</th>
+      <th>Bank Type</th>
+      <th>Balance</th>
+      <th>Loan</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let acc of accounts">
+      <td>{{ acc.id }}</td>
+      <td>{{ acc.username }}</td>
+      <td>{{ acc.pan }}</td>
+      <td>{{ acc.aadhaar }}</td>
+      <td>{{ acc.accNo }}</td>
+      <td>{{ acc.bankType }}</td>
+      <td>{{ acc.balance }}</td>
+      <td>{{ acc.loan }}</td>
+      <td>{{ acc.address }}</td>
+      <td>
+        <button (click)="select(acc)">Edit</button>
+         
+      </td>
+    </tr>
+  </table>
+
+  <div *ngIf="selected">
+    <h3>{{ selected!.id ? 'Edit' : 'New' }} Account</h3>
+    <form (ngSubmit)="save()">
+      <input [(ngModel)]="selected!.username" name="username" placeholder="Username">
+      <input [(ngModel)]="selected!.pan" name="pan" placeholder="PAN">
+      <input [(ngModel)]="selected!.aadhaar" name="aadhaar" placeholder="Aadhaar">
+      <input [(ngModel)]="selected!.accNo" name="accNo" placeholder="Account No">
+      <input [(ngModel)]="selected!.bankType" name="bankType" placeholder="Bank Type">
+      <input [(ngModel)]="selected!.balance" name="balance" type="number" placeholder="Balance">
+      <input [(ngModel)]="selected!.loan" name="loan" type="number" placeholder="Loan">
+      <input [(ngModel)]="selected!.address" name="address" placeholder="Address">
+      <button type="submit">Save</button>
+      <button type="button" (click)="selected = undefined">Cancel</button>
+    </form>
+  </div>
+</div>

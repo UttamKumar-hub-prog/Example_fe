@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+.card {
+  border-radius: 0.75rem;
+}
+
+.mat-form-field {
+  width: 100%;
+}
