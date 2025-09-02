@@ -1,11 +1,114 @@
-table {
-  width: 100%;
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-.card {
-  border-radius: 0.75rem;
+/* Title */
+.page-title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
 }
 
-.mat-form-field {
+/* Table */
+.styled-table {
   width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.styled-table thead tr {
+  background-color: #2980b9;
+  color: #fff;
+  text-align: left;
+}
+
+.styled-table th, 
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.styled-table tbody tr {
+  background-color: #f9f9f9;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #ecf0f1;
+  transition: 0.3s;
+}
+
+/* Buttons */
+.btn-edit, .btn-save, .btn-cancel {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-edit {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #d68910;
+}
+
+.btn-save {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn-save:hover {
+  background-color: #1e8449;
+}
+
+.btn-cancel {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #c0392b;
+}
+
+/* Form */
+.form-container {
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.account-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.account-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.account-form input:focus {
+  border-color: #2980b9;
+  box-shadow: 0 0 4px rgba(41, 128, 185, 0.4);
+}
+
+.form-actions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }

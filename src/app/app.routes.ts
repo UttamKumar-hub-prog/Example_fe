@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+// app.routes.ts
+import { Routes } from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SignupComponent } from './auth/components/signup/signup.component';
@@ -11,18 +11,12 @@ export const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () =>
-      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+      import('./modules/admin/admin-routing.module').then((m) => m.AdminRoutingModule),
   },
   {
     path: 'user',
     loadChildren: () =>
-      import('./modules/user/user.module').then((m) => m.UserModule),
+      import('./modules/user/user-routing.module').then((m) => m.UserRoutingModule),
   },
-  { path: '**', redirectTo: '/login' }, // wildcard route
+  { path: '**', redirectTo: '/login' },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

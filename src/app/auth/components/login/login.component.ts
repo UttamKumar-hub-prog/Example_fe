@@ -59,8 +59,11 @@ export class LoginComponent {
 
           if (StorageService.isAdminLoggedIn()) {
             this.router.navigate(['/admin/dashboard']);
+            this.loginForm.reset();
           } else if (StorageService.isUserLoggedIn()) {
-            this.router.navigate(['/user/dashboard']);
+            this.router.navigate(['/user/user-dashboard']);
+            
+
           }
 
           this.snackbar.open('Login Successful', 'Close', { duration: 5000 });
@@ -76,6 +79,7 @@ export class LoginComponent {
         this.snackbar.open('Login failed. Please try again.', 'Close', {
           duration: 5000,
           panelClass: 'error-snackbar',
+          
         });
         console.error(err);
       },

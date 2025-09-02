@@ -4,11 +4,12 @@ import { Router, RouterLink } from '@angular/router';
 import { StorageService } from '../auth/services/storage.service';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from "../modules/admin/admin-routing.module";
+import { UserRoutingModule } from '../modules/user/user-routing.module';
 
 
 @Component({
   selector: 'app-home-component',
-  imports: [CommonModule, MaterialModule, RouterLink, AdminRoutingModule],
+  imports: [CommonModule, MaterialModule, RouterLink, AdminRoutingModule, UserRoutingModule],
   templateUrl: './home-component.component.html',
   styleUrl: './home-component.component.css'
 })

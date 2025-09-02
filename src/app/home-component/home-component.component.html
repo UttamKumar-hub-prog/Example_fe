@@ -1,42 +1,56 @@
-<!-- Welcome Card -->
-<div class="card text-center my-4" *ngIf="!isUserLoggedIn && !isAdminLoggedIn">
-  <div class="card-body">
-    <h2 class="card-title">Welcome to Bank Portal</h2>
-    <a class="btn btn-primary mx-2" routerLink="/user/dashboard">User Dashboard</a>
-    <a class="btn btn-secondary mx-2" routerLink="/admin/dashboard">Admin Dashboard</a>
+<!-- Welcome Section -->
+<div class="welcome-section text-center my-5" *ngIf="!isUserLoggedIn && !isAdminLoggedIn">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-body p-5">
+      <img src="/src/assets/logobank.png" alt="Bank Logo" class="mb-3" width="80">
+      <h2 class="card-title fw-bold text-primary">Welcome to Bank Portal</h2>
+      <p class="text-muted">Manage your accounts, payments, and customers easily</p>
+      <div class="mt-4">
+        <a class="btn btn-primary btn-lg mx-2 shadow" routerLink="/signup">
+          <i class="bi bi-person-plus"></i> Sign Up
+        </a>
+        <a class="btn btn-secondary btn-lg mx-2 shadow" routerLink="/login">
+          <i class="bi bi-box-arrow-in-right"></i> Login
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- User Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" *ngIf="isUserLoggedIn">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background:  darkgrey;" *ngIf="isUserLoggedIn">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/user/dashboard">Bank Portal</a>
+    <a class="navbar-brand fw-bold" routerLink="/user/user-dashboard">
+      <img src="/src/assets/logobank.png" alt="User" width="30" class="me-2"> Bank Portal -User
+    </a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" routerLink="/user/dashboard">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/user/account">Accounts</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/user/customer">Customers</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/user/payment">Payments</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/user/feedback">Feedback</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/user/user-dashboard"><i class="bi bi-house-door"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/user/user-account"><i class="bi bi-wallet2"></i> Accounts</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/user/user-customer"><i class="bi bi-people"></i> Customers</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/user/user-payment"><i class="bi bi-credit-card"></i> Payments</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/user/user-feedback"><i class="bi bi-chat-dots"></i> Feedback</a></li>
       </ul>
-      <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+      <button class="btn btn-outline-light shadow-sm" (click)="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button>
     </div>
   </div>
 </nav>
 
 <!-- Admin Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isAdminLoggedIn">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm" *ngIf="isAdminLoggedIn">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/admin/dashboard">Bank Portal (Admin)</a>
+    <a class="navbar-brand fw-bold" routerLink="/admin/dashboard">
+      <img src="/src/assets/logobank.png" alt="Admin" width="30" class="me-2"> Bank Portal (Admin)
+    </a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" routerLink="/admin/dashboard">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/admin/accounts">Accounts</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/admin/customers">Customers</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/admin/feedbacks">Feedbacks</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/admin/auditlogs">Audit Logs</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/accounts"><i class="bi bi-wallet2"></i> Accounts</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/customers"><i class="bi bi-people-fill"></i> Customers</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/feedbacks"><i class="bi bi-chat-left-text"></i> Feedbacks</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/admin/auditlogs"><i class="bi bi-file-earmark-text"></i> Audit Logs</a></li>
       </ul>
-      <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+      <button class="btn btn-outline-light shadow-sm" (click)="logout()"><i class="bi bi-box-arrow-right"></i> Logout</button>
     </div>
   </div>
 </nav>

@@ -8,7 +8,7 @@ export class CustomerApi {
   private base = environment.apiBaseUrl;
   constructor(private http: HttpClient) {}
   create(body: Partial<Customer>) {
-    return this.http.post<Customer>(`${this.base}/customers/`, body);
+    return this.http.post<Customer>(`${this.base}/customers/saveDetails`, body);
   }
   getAll() {
     return this.http.get<Customer[] | Page<Customer>>(

@@ -6,14 +6,15 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-nav',
+  standalone: true,
   imports: [MaterialModule, CommonModule, RouterLink],
   templateUrl: './admin-nav.component.html',
-  styleUrls: ['./admin-nav.component.css'] // ✅ fixed
+  styleUrls: ['./admin-nav.component.css'], // ✅ fixed
 })
 export class AdminNavComponent {
   isAdminLoggedIn: boolean = StorageService.isAdminLoggedIn();
 
-  constructor(private router: Router) {
+  constructor(private readonly router: Router) {
     this.router.events.subscribe(() => {
       this.isAdminLoggedIn = StorageService.isAdminLoggedIn();
     });

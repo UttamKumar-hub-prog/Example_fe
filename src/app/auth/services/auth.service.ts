@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../../core/models';
 
 
 const BASE_URL="http://localhost:8765/";
@@ -14,13 +15,13 @@ export class AuthService {
 
   constructor(private  readonly http:HttpClient) { }
 
-  signup(signupRequest:any):Observable<any>
+  signup(signupRequest:User):Observable<any>
   {
-    return this.http.post(BASE_URL+"api/auth/signup",signupRequest)
+    return this.http.post(BASE_URL+"auth/signup",signupRequest)
   }
-  login(loginRequest:any):Observable<any>
+  login(loginRequest:User):Observable<any>
   {
-    return this.http.post(BASE_URL+"api/auth/login",loginRequest)
+    return this.http.post(BASE_URL+"auth/login",loginRequest)
   }
     
 }

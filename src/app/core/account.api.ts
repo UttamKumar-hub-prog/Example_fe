@@ -10,7 +10,7 @@ export class AccountApi {
   constructor(private readonly http: HttpClient) {}
 
   create(body: Partial<Account>) {
-    return this.http.post<Account>(`${this.base}/accounts`, body);
+    return this.http.post<Account>(`${this.base}/accounts/saveDetails`, body);
   }
 
   update(id: number, body: Partial<Account>) {
@@ -24,7 +24,7 @@ export class AccountApi {
   }
 
   getAll() {
-    return this.http.get<Account[]>(`${this.base}/accounts`);
+    return this.http.get<Account[]>(`${this.base}/accounts/getAllAccounts`);
   }
 
   getByAddress(address: string) {

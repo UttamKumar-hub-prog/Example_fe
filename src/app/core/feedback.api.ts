@@ -8,7 +8,7 @@ export class FeedbackApi {
   private readonly base = environment.apiBaseUrl;
   constructor(private http: HttpClient) {}
   create(body: Partial<Feedback>) {
-    return this.http.post<Feedback>(`${this.base}/feedbacks/`, body);
+    return this.http.post<Feedback>(`${this.base}/feedbacks/saveFeedback`, body);
   }
   getAll() {
     return this.http.get<Feedback[] | Page<Feedback>>(
