@@ -42,8 +42,8 @@ export interface Customer {
 export interface Account {
   id: number;
   username: string;
-  pan: string;
-  aadhaar: string;
+  pan: any;
+  aadhaar: any;
   accNo: string;
   bankType: BankAccountType;
   balance: number;

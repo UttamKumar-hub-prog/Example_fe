@@ -1,14 +1,14 @@
 <div class="container mt-4">
-  <div class="card shadow p-4">
-    <h3 class="text-center text-primary mb-3">👥 Customers</h3>
+  <div class="card shadow-lg p-4 glass-card">
+    <h3 class="text-center text-primary mb-4">👥 Customers</h3>
 
     <!-- Actions -->
-    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
       <button
         mat-raised-button
         color="primary"
         (click)="toggleCreate()"
-        class="mb-2"
+        class="btn-glow"
       >
         ➕ New
       </button>
@@ -28,7 +28,7 @@
       <table
         mat-table
         [dataSource]="filtered"
-        class="mat-elevation-z2 table table-striped table-hover"
+        class="mat-elevation-z2 table table-striped table-hover table-glass"
       >
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -63,7 +63,7 @@
 
   <!-- Create Form -->
   <section *ngIf="creating" class="mt-4">
-    <div class="card shadow p-4">
+    <div class="card shadow-lg p-4 glass-card">
       <h4 class="text-success mb-3">📝 Create Customer</h4>
       <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="row g-3">
@@ -96,6 +96,7 @@
               mat-raised-button
               color="primary"
               [disabled]="form.invalid"
+              class="btn-glow"
             >
               💾 Save
             </button>

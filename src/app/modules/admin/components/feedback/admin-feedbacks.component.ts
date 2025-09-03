@@ -12,143 +12,146 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-users-feedbacks',
   template: `
-    <div class="container py-4">
-      <h3 class="mb-4 text-center fw-bold">User Feedbacks</h3>
+    <div class="container py-5">
+      <h3 class="text-center fw-bold mb-4 text-primary">👥 User Feedbacks</h3>
 
-      <!-- Action Buttons -->
-      <div class="d-flex justify-content-between mb-3">
-        <button mat-raised-button color="primary" (click)="toggleCreate()">
+      <!-- Action Button -->
+      <div class="d-flex justify-content-end mb-3">
+        <button
+          class="btn btn-primary"
+          (click)="toggleCreate()"
+        >
           {{ createMode ? 'Cancel' : 'New Feedback' }}
         </button>
       </div>
 
-      <!-- Table -->
-      <div class="table-responsive shadow-sm rounded">
-        <table
-          mat-table
-          [dataSource]="data"
-          class="table table-striped table-hover align-middle"
-        >
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef class="text-center">#</th>
-            <td mat-cell *matCellDef="let r" class="text-center">{{ r.id }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let r">{{ r.name }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef>Email</th>
-            <td mat-cell *matCellDef="let r">{{ r.email }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="message">
-            <th mat-header-cell *matHeaderCellDef>Message</th>
-            <td mat-cell *matCellDef="let r">{{ r.message }}</td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayed"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayed"></tr>
+      <!-- Feedback Table -->
+      <div class="table-responsive glass-card mb-4 shadow-sm rounded">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th class="text-center">#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of data">
+              <td class="text-center">{{ r.id }}</td>
+              <td>{{ r.name }}</td>
+              <td>{{ r.email }}</td>
+              <td>{{ r.message }}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
       <!-- Feedback Form -->
-      <section *ngIf="createMode" class="card shadow-sm p-4 mt-4">
-        <h4 class="mb-3">Submit Feedback</h4>
+      <div *ngIf="createMode" class="card glass-card shadow-sm p-4">
+        <h4 class="mb-3 text-secondary">Submit Feedback</h4>
         <form [formGroup]="form" (ngSubmit)="submit()">
           <div class="row g-3">
             <div class="col-md-4 col-12">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Name</mat-label>
+              <div class="form-floating">
                 <input
-                  matInput
+                  type="text"
+                  class="form-control"
+                  id="name"
                   formControlName="name"
                   placeholder="Enter your name"
                 />
-              </mat-form-field>
+                <label for="name">Name</label>
+              </div>
             </div>
 
             <div class="col-md-4 col-12">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Email</mat-label>
+              <div class="form-floating">
                 <input
-                  matInput
+                  type="email"
+                  class="form-control"
+                  id="email"
                   formControlName="email"
                   placeholder="Enter your email"
                 />
-              </mat-form-field>
+                <label for="email">Email</label>
+              </div>
             </div>
 
             <div class="col-12">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Message</mat-label>
+              <div class="form-floating">
                 <textarea
-                  matInput
+                  class="form-control"
+                  id="message"
                   formControlName="message"
-                  rows="3"
                   placeholder="Your feedback"
+                  style="height: 100px;"
                 ></textarea>
-              </mat-form-field>
+                <label for="message">Message</label>
+              </div>
             </div>
           </div>
 
           <div class="d-flex justify-content-end mt-3">
-            <button mat-raised-button color="primary" [disabled]="form.invalid">
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="form.invalid"
+            >
               Save
             </button>
           </div>
         </form>
-      </section>
+      </div>
     </div>
   `,
-  styles: `
-  .container {
-  max-width: 1100px;
-}
+  styles: [`
+    h3 {
+      font-size: 2rem;
+    }
 
-table {
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-}
+    /* Glass Effect */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
 
-th {
-  background: #f8f9fa;
-  font-weight: 600;
-}
+    .glass-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
 
-.card {
-  border-radius: 10px;
-}
+    table {
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-mat-form-field {
-  font-size: 14px;
-}
-
-@media (max-width: 768px) {
-  h3 {
-    font-size: 1.5rem;
-  }
-  table {
-    font-size: 13px;
-  }
-}
-
-`,
+    @media (max-width: 768px) {
+      h3 {
+        font-size: 1.5rem;
+      }
+      table {
+        font-size: 0.9rem;
+      }
+      .btn {
+        font-size: 0.9rem;
+      }
+    }
+  `],
   imports: [MaterialModule, ReactiveFormsModule, CommonModule],
   standalone: true,
 })
 export class AdminFeedbacksComponent implements OnInit {
   private readonly api = inject(FeedbackApi);
-  private readonly fb = inject(NonNullableFormBuilder); // ✅ ensures no nulls
+  private readonly fb = inject(NonNullableFormBuilder);
 
   data: Feedback[] = [];
-  displayed = ['id', 'name', 'email', 'message'];
   createMode = false;
 
-  // ✅ form values always `string`
   form = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
